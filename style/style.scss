@@ -1,0 +1,213 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+.btn {
+  padding: 0.5rem 0.75rem;
+  border: none;
+  margin: 1rem 0.5rem;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+body {
+  background-color: rgb(52, 78, 85);
+  color: white;
+  font-family: "Oswald", sans-serif;
+
+  section.animation-wrapper {
+    /*讓動畫固定不變*/
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    background-color: white;
+
+    section.animation {
+      margin-top: 10vh;
+      height: 80vh;
+      // border: 5px solid red;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .hero {
+        // border: 5px solid green;
+        width: 100%;
+        height: 0;
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+    }
+    .slider {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background: linear-gradient(
+        to right,
+        rgb(91, 133, 145),
+        rgb(255, 255, 255)
+      );
+      z-index: -1;
+    }
+  }
+  // 把填答部分置中
+  header {
+    nav {
+      // 導覽列的陰影
+      box-shadow: 0 8px 6px -6px black;
+      display: flex;
+      ul {
+        // 把導覽列變橫
+        display: flex;
+        li {
+          // 跟旁邊留點距離
+          padding: 1rem;
+          a {
+            // 導覽列字變大+字可以被改色+改色時間
+            font-size: 1.15rem;
+            transition: all 0.5s ease;
+            &:hover {
+              color: rgb(58, 243, 197);
+            }
+          }
+        }
+      }
+    }
+  }
+  main {
+    section.mainPart {
+      padding: 1rem;
+      /*讓大家都能水平排列*/
+      display: flex;
+      /*改變各主要元素的放置方向為垂直*/
+      flex-direction: column;
+      /*東西置中(但會拉長)*/
+      text-align: center;
+      /*元素置中(不拉長填滿)*/
+      align-items: center;
+      h1 {
+        font-size: 4rem;
+      }
+      p {
+        font-size: 1.8rem;
+      }
+      p.explain {
+        font-size: 1.4rem;
+        color: aliceblue;
+      }
+      div.allInput {
+        form {
+          input,
+          select {
+            font-size: 1rem;
+            padding: 0.5rem;
+            /*各表格不要有中間的格線*/
+            border: 0.25px solid rgb(40, 51, 54);
+            margin: 0.55rem;
+            border-radius: 0.25rem;
+          }
+          /*選0-6的*/
+          input.classCredit {
+            width: 15%;
+          }
+          button {
+            border: none;
+            cursor: pointer;
+            background-color: rgb(40, 51, 54);
+            i {
+              font-size: 1.25rem;
+              pointer-events: none;
+              color: white;
+            }
+          }
+        }
+      }
+      button.plus-btn {
+        background-color: rgb(40, 51, 54);
+        border: none;
+        width: 2.5rem;
+        margin: 3rem 0rem;
+        cursor: pointer;
+        i {
+          font-size: 2.5rem;
+          color: white;
+        }
+      }
+      div.result {
+        width: 200px;
+        height: 200px;
+        border: 4px solid rgb(106, 213, 255);
+        border-radius: 50%;
+        text-align: center;
+        animation-name: border_color;
+        animation-duration: 12s;
+        animation-iteration-count: infinite;
+        p {
+          margin-top: 15px;
+        }
+        h2#result-gpa {
+          font-size: 3.5rem;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+}
+
+//刪除的動畫
+.remove {
+  transform: scale(0);
+  transition: all 0.5s ease;
+}
+//新增的表格從小到大
+@keyframes scaleUp {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes scaleDown {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(0);
+  }
+}
+
+@keyframes border_color {
+  0% {
+    border-color: rgb(255, 241, 164);
+  }
+  20% {
+    border-color: rgb(163, 255, 209);
+  }
+  40% {
+    border-color: rgb(137, 202, 255);
+  }
+  60% {
+    border-color: rgb(211, 157, 241);
+  }
+  80% {
+    border-color: rgb(255, 159, 159);
+  }
+}
